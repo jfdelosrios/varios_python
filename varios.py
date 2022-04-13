@@ -8,20 +8,7 @@ import pandas as pd
 from sqlite3 import connect
 
 
-def cacharrearBaseDatos(_path:str, _tabla:str) -> dict:
-    """ """
-  
-    conn = connect(_path)
-
-    try:
-        tabla = pd.read_sql('SELECT * FROM ' + _tabla, conn)
-    except pd.io.sql.DatabaseError as error:
-        return {'status': ['error', error], 'out': pd.DataFrame()}
-
-    return {'status': ['ok', ''], 'out': tabla}
-
-
-def cacharrearBaseDatos1(_path:str, query:str) ->dict:
+def cacharrearBaseDatos(_path:str, query:str) ->dict:
   """
   Ejecuta un query en una base de datos que se encuentra en el path.
   En la salida genera un diccionario que tiene las claves:
